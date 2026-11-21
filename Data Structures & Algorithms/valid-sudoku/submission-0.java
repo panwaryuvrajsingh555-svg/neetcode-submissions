@@ -1,0 +1,39 @@
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        for(int i = 0 ; i < 9 ; i++){
+            for(int j = 0 ; j < 9; j++){
+                if(board[i][j] == '.') {
+                    continue;
+                }
+            if(!isValid(board, i , j)){
+                return false;
+            }
+                }
+            }
+            return true;
+        }
+        public boolean isValid(char[][] board, int row , int col){
+            char ch = board[row][col];
+            for(int i = 0 ; i < 9 ; i++){
+              if(i != row && board[i][col] == ch ){
+                return false;
+              }
+            }
+               for(int j = 0 ; j < 9 ; j++){
+              if(j !=   col && board[row][j] == ch ){
+                return false;
+              }
+}
+int startrow = (row/3)*3;
+int startcol = (col/3)*3;
+for(int i = startrow ; i< startrow+3; i++){
+    for(int j = startcol ; j < startcol + 3; j++){
+        if((i != row || j != col) && board[i][j] == ch){
+            return false;
+        }
+    }
+}
+        
+        return true;
+}
+}
